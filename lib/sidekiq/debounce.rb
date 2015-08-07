@@ -46,7 +46,7 @@ module Sidekiq
 
     def reschedule(job, at)
       scheduled_job = scheduled_set.find_job(job['jid'])
-      scheduled_job.reschedule(at)
+      scheduled_job.reschedule(at) if scheduled_job.present?
       job
     end
 
